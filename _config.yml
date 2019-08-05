@@ -25,6 +25,7 @@ github_username:  KingBuchanan
 # Build settings
 markdown: kramdown
 theme: jekyll-theme-cayman
+encoding: utf-8
 plugins:
   - jekyll-feed
 
