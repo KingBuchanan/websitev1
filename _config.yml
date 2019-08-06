@@ -22,12 +22,29 @@ url: "KingBuchanan.github.io" # the base hostname & protocol for your site, e.g.
 twitter_username: akeemandsaltfis
 github_username:  KingBuchanan
 
+
+
 # Build settings
 markdown: kramdown
 theme: jekyll-theme-cayman
 encoding: utf-8
 plugins:
-  - jekyll-feed
+   - jekyll-feed
+   - jekyll-github-metadata
+   - jemoji
+   - jekyll-octicons
+
+projects:
+  sort_by: pushed
+  # sort_by options:
+  #   - pushed
+  #   - stars
+  limit: 9
+  exclude:
+    archived: false
+    forks: true
+    projects:
+     - repo-name
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

@@ -1,54 +1,5 @@
----
-layout: default
-
-title: Projects | The Stuff I've Done So Far
-description: Some of the projects I've completed either through coursework or free time 
-keywords: hakeem, coursework, projects
-url: https://kingbuchanan.github.io/
-custom_css: projects.css
-custom_js: projects.js
----
-
-<div class="header simple-header">
-    <div class="Grid container">
-        <div id="header-text" class="Grid-cell">
-            <h1 class="large-title">Projects</h1>
-            <div class="search-bar">
-                <input class="search-box" type="text" name="search" placeholder="Search Projects" autocomplete="off" />
-                <span class="Icon Icon--search"></span>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<div class="d-sm-flex flex-wrap gutter-condensed mb-4">
-    {% if site.projects.sort_by == 'stars' %}
-      {% assign sort_order = 'stargazers_count', 'last' %}
-    {% else %}
-      {% assign sort_order = 'pushed_at' %}
-    {% endif %}
-  
-    {% if site.projects.exclude.archived && site.projects.exclude.forks %}
-      {% assign filtered_repos = site.github.public_repositories | where:'archived', false | where:'fork', false | sort: sort_order | reverse %}
-    {% elsif site.projects.exclude.archived %}
-      {% assign filtered_repos = site.github.public_repositories | where:'archived', false | sort: sort_order | reverse %}
-    {% elsif site.projects.exclude.forks %}
-      {% assign filtered_repos = site.github.public_repositories | where:'fork', false | sort: sort_order | reverse %}
-    {% else %}
-      {% assign filtered_repos = site.github.public_repositories | sort: sort_order | reverse %}
-    {% endif %}
-  
-    {% for repository in filtered_repos | limit: site.projects.limit %}
-      {% unless site.projects.exclude.projects contains repository.name %}
-        <div class="col-sm-6 col-md-12 col-lg-6 col-xl-4 mb-3">
-          {% include repo-card.html %}
-        </div>
-      {% endunless %}
-    {% endfor %}
-</div>
-
-<div>
+<div class="github-component d-flex flex-column flex-justify-between height-full text-left {% if site.style == 'dark' %}box-shadow{% else %}border border-gray-light{% endif %} bg-white rounded-1 p-3">
+  <div>
     <div class="d-flex flex-justify-between flex-items-start mb-1">
       <h1 class="f4 lh-condensed mb-1">
         <a href="{{ repository.html_url }}">
@@ -76,4 +27,3 @@ custom_js: projects.js
     {% endif %}
   </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.0.4/fuse.min.js" async></script>
